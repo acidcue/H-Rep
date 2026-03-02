@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inquiry | H-Rep Strategic Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body class="contact-page">
+
+    <header id="main-header">
+        <nav class="container">
+            <div class="logo"><a href="index.html"><img src="logo.png" alt="H-Rep Logo"></a></div>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#jobs">Careers</a></li>
+                <li><a href="contact.html" class="nav-cta">Inquiry Portal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="portal-wrapper">
+        <div class="container">
+            <div class="portal-grid">
+                
+                <div class="portal-info reveal reveal-active">
+                    <span class="eyebrow">Strategic Access</span>
+                    <h1 class="text-gradient">Partner with <br>Excellence.</h1>
+                    <p>Whether you are scaling an executive team or seeking your next milestone, our consultants are ready to bridge the gap.</p>
+                    
+                    <div class="contact-methods">
+                        <div class="method-item">
+                            <span class="gold-icon">✉</span>
+                            <div>
+                                <h4>Direct Inquiry</h4>
+                                <p>partnerships@h-rep.com</p>
+                            </div>
+                        </div>
+                        <div class="method-item">
+                            <span class="gold-icon">📍</span>
+                            <div>
+                                <h4>Global HQ</h4>
+                                <p>Accra, Ghana</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portal-form-container reveal reveal-active">
+                    <div class="glass-form" id="form-container">
+                        <div class="form-mode-selector">
+                            <button id="mode-client" class="active">Hire Talent</button>
+                            <button id="mode-talent">Find Role</button>
+                        </div>
+
+                        <form id="inquiry-form">
+                            <div class="input-group">
+                                <label>Full Name</label>
+                                <input type="text" placeholder="John Doe" required>
+                            </div>
+                            
+                            <div class="input-group" id="company-field">
+                                <label>Organization</label>
+                                <input type="text" placeholder="Company Name">
+                            </div>
+
+                            <div class="input-group">
+                                <label>Professional Email</label>
+                                <input type="email" placeholder="john@company.com" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label id="message-label">Mandate Brief</label>
+                                <textarea rows="4" placeholder="Briefly describe your requirements..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-primary w-full">Submit Inquiry</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container"><p>&copy; 2026 H-Rep Human Capital. All Rights Reserved.</p></div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>

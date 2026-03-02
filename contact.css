@@ -1,0 +1,130 @@
+/* --- PORTAL BACKGROUND & WRAPPER --- */
+.contact-page {
+    background: radial-gradient(circle at 10% 20%, rgba(26, 43, 72, 1) 0%, rgba(10, 20, 36, 1) 90%);
+    min-height: 100vh;
+}
+
+.portal-wrapper {
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+}
+
+.portal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+}
+
+/* --- INFO SECTION --- */
+.portal-info { color: white; }
+.portal-info h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 2rem; line-height: 1.1; }
+.portal-info p { font-size: 1.1rem; opacity: 0.7; max-width: 450px; line-height: 1.8; }
+
+.contact-methods { margin-top: 3rem; display: grid; gap: 2rem; }
+.method-item { display: flex; gap: 20px; align-items: center; }
+.method-item h4 { color: var(--gold); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+.gold-icon { 
+    width: 50px; height: 50px; border: 1px solid rgba(197, 160, 89, 0.3); 
+    display: flex; align-items: center; justify-content: center; 
+    border-radius: 50%; color: var(--gold); font-size: 1.2rem;
+    background: rgba(197, 160, 89, 0.05);
+}
+
+/* --- THE GLASS FORM --- */
+.glass-form {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    padding: 50px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.form-mode-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: rgba(0,0,0,0.2);
+    border-radius: 50px;
+    padding: 5px;
+    margin-bottom: 35px;
+}
+
+.form-mode-selector button {
+    padding: 12px;
+    border: none;
+    border-radius: 40px;
+    background: transparent;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-mode-selector button.active {
+    background: var(--gold-grad);
+    color: #1a1a1a;
+}
+
+/* --- INPUTS --- */
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; color: var(--gold); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; }
+.input-group input, .input-group textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+    color: white;
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+.input-group input:focus, .input-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.w-full { width: 100%; cursor: pointer; border: none; margin-top: 10px; }
+
+/* --- SUCCESS STATE --- */
+.success-msg { text-align: center; color: white; padding: 40px 0; }
+.success-msg h2 { color: var(--gold); margin-bottom: 15px; font-size: 2rem; }
+.success-icon { font-size: 4rem; display: block; margin-bottom: 20px; animation: scaleUp 0.5s ease forwards; color: var(--gold); }
+
+@keyframes scaleUp {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* --- MOBILE --- */
+@media (max-width: 992px) {
+    .portal-grid { grid-template-columns: 1fr; text-align: center; gap: 60px; }
+    .portal-info p { margin: 0 auto; }
+    .contact-methods { justify-content: center; text-align: left; }
+    .glass-form { padding: 40px 20px; }
+    .portal-wrapper { padding: 60px 0; }
+}
+/* Special entrance for the glass form */
+.glass-form {
+    /* ... keep your existing styles ... */
+    animation: formEntrance 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s both;
+}
+
+@keyframes formEntrance {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(50px);
+        filter: blur(15px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+    }
+}
