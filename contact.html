@@ -13,13 +13,9 @@
     <header id="main-header">
         <nav class="container">
             <div class="logo"><a href="index.html"><img src="logo.png" alt="H-Rep Logo"></a></div>
-            
             <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </div>
-
             <ul class="nav-links">
                 <li><a href="index.html#home">Home</a></li>
                 <li><a href="index.html#services">Services</a></li>
@@ -60,34 +56,36 @@
                 <div class="portal-form-container reveal reveal-active">
                     <div class="glass-form" id="form-container">
                         <div class="form-mode-selector">
-                            <button id="mode-client" class="active">Hire Talent</button>
-                            <button id="mode-talent">Find Role</button>
+                            <button type="button" id="mode-client" class="active">Hire Talent</button>
+                            <button type="button" id="mode-talent">Find Role</button>
                         </div>
 
                         <form id="inquiry-form">
+                            <input type="hidden" name="inquiry_type" id="inquiry_type" value="Hire Talent">
+
                             <div class="input-group">
                                 <label>Full Name</label>
-                                <input type="text" placeholder="John Doe" required>
+                                <input type="text" name="from_name" placeholder="John Doe" required>
                             </div>
                             
                             <div class="input-group" id="company-field">
                                 <label>Organization</label>
-                                <input type="text" placeholder="Company Name">
+                                <input type="text" name="organization" placeholder="Company Name">
                             </div>
 
                             <div class="input-group">
                                 <label>Professional Email</label>
-                                <input type="email" placeholder="john@company.com" required>
+                                <input type="email" name="reply_to" placeholder="john@company.com" required>
                             </div>
 
                             <div class="input-group">
                                 <label id="message-label">Mandate Brief</label>
-                                <textarea rows="4" placeholder="Briefly describe your requirements..."></textarea>
+                                <textarea name="message" rows="4" placeholder="Briefly describe your requirements..." required></textarea>
                             </div>
 
-                            <button type="submit" class="btn-primary w-full">Submit Inquiry</button>
+                            <button type="submit" id="submit-btn" class="btn-primary w-full">Submit Inquiry</button>
                         </form>
-                    </div>
+                        </div>
                 </div>
 
             </div>
@@ -98,6 +96,7 @@
         <div class="container"><p>&copy; 2026 H-Rep Human Capital. All Rights Reserved.</p></div>
     </footer>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
     <script src="contact.js"></script>
 </body>

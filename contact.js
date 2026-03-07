@@ -1,55 +1,61 @@
+(function() {
+    // INITIALIZE EMAILJS - Replace with your Public Key
+    emailjs.init("HUbO2WDTiC7csM48K"); 
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
-    const btnClient = document.getElementById('mode-client');
-    const btnTalent = document.getElementById('mode-talent');
-    const companyField = document.getElementById('company-field');
-    const messageLabel = document.getElementById('message-label');
-    const messageInput = document.querySelector('textarea');
     const form = document.getElementById('inquiry-form');
-    const formContainer = document.getElementById('form-container');
+    const submitBtn = document.getElementById('submit-btn');
+    const typeInput = document.getElementById('inquiry_type');
+    
+    const clientBtn = document.getElementById('mode-client');
+    const talentBtn = document.getElementById('mode-talent');
+    const messageLabel = document.getElementById('message-label');
 
-    // 1. Toggle between Hire Talent and Find Role modes
-    btnClient.addEventListener('click', () => {
-        btnClient.classList.add('active');
-        btnTalent.classList.remove('active');
-        companyField.style.display = 'block';
+    // 1. MODE SELECTOR LOGIC
+    clientBtn.addEventListener('click', () => {
+        typeInput.value = "Hire Talent";
+        clientBtn.classList.add('active');
+        talentBtn.classList.remove('active');
         messageLabel.innerText = "Mandate Brief";
-        messageInput.placeholder = "Briefly describe your requirements...";
     });
 
-    btnTalent.addEventListener('click', () => {
-        btnTalent.classList.add('active');
-        btnClient.classList.remove('active');
-        companyField.style.display = 'none';
-        messageLabel.innerText = "Career Goals";
-        messageInput.placeholder = "Tell us about your next professional move...";
+    talentBtn.addEventListener('click', () => {
+        typeInput.value = "Find Role";
+        talentBtn.classList.add('active');
+        clientBtn.classList.remove('active');
+        messageLabel.innerText = "Career Objectives";
     });
 
-    // 2. Handle the Submission Animation
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const btn = form.querySelector('button');
-        const originalText = btn.innerText;
-        btn.innerText = "Transmitting...";
-        btn.disabled = true;
-        btn.style.opacity = "0.7";
+    // 2. FORM SUBMISSION
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
 
-        // Simulate a premium delay for processing
-        setTimeout(() => {
-            formContainer.style.opacity = '0';
-            
-            setTimeout(() => {
-                formContainer.innerHTML = `
-                    <div class="success-msg">
-                        <span class="success-icon">✓</span>
-                        <h2>Mandate Received</h2>
-                        <p>A strategic consultant will review your inquiry and contact you within 24 hours.</p>
-                        <br>
-                        <a href="index.html" class="btn-primary" style="display:inline-block; text-decoration:none;">Return to Headquarters</a>
-                    </div>
-                `;
-                formContainer.style.opacity = '1';
-            }, 300);
-        }, 1500);
-    });
+            // Loading State
+            submitBtn.innerText = "Transmitting...";
+            submitBtn.disabled = true;
+
+            // Use your Service ID and Template ID from EmailJS Dashboard
+            const serviceID = 'service_672zcvy';
+            const templateID = 'template_8kb41o3';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    // Success UI
+                    document.getElementById('form-container').innerHTML = `
+                        <div class="success-message reveal reveal-active" style="text-align: center; padding: 40px 0;">
+                            <div style="font-size: 50px; margin-bottom: 20px;">✓</div>
+                            <h2 class="text-gradient">Transmission Successful</h2>
+                            <p style="color: white; margin-top: 15px;">Your inquiry has been logged in the H-Rep strategic portal. A consultant will contact you shortly.</p>
+                            <a href="index.html" class="btn-primary" style="margin-top: 30px; display: inline-block;">Return Home</a>
+                        </div>
+                    `;
+                }, (error) => {
+                    alert("Submission failed. Error: " + JSON.stringify(error));
+                    submitBtn.innerText = "Submit Inquiry";
+                    submitBtn.disabled = false;
+                });
+        });
+    }
 });

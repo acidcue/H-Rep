@@ -26,7 +26,7 @@ nav { display: flex; justify-content: space-between; align-items: center; }
 
 /* --- HERO --- */
 .hero { background: var(--navy-grad); min-height: 85vh; display: flex; align-items: center; text-align: center; color: white; clip-path: ellipse(150% 100% at 50% 0%); padding: 80px 20px; }
-.text-gradient { background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.text-gradient { background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; margin-bottom: 1.5rem; }
 .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 3rem; opacity: 0.9; }
 .hero-actions { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
@@ -46,8 +46,80 @@ nav { display: flex; justify-content: space-between; align-items: center; }
 }
 .service-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
 .service-card:hover::before { transform: scaleX(1); }
-.card-number { font-size: 2.5rem; font-weight: 900; background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+.card-number { font-size: 2.5rem; font-weight: 900; background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+/* --- SERVICES SECTION --- */
+.services {
+    padding: 100px 0;
+    background-color: #ffffff;
+}
 
+.section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+}
+
+.services-matrix {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row on desktop */
+    gap: 20px;
+}
+
+.service-item {
+    background: #fdfdfd;
+    padding: 25px;
+    border-radius: 12px;
+    display: flex;
+    gap: 15px;
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 10px 30px rgba(26, 43, 72, 0.05);
+}
+
+.service-num {
+    font-weight: 900;
+    color: var(--gold);
+    font-size: 0.85rem;
+    background: rgba(197, 160, 89, 0.1);
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.service-content h3 {
+    font-size: 1rem;
+    color: var(--navy);
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.service-content p {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .services-matrix {
+        grid-template-columns: repeat(2, 1fr); /* 2 items on tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .services-matrix {
+        grid-template-columns: 1fr; /* 1 item on phone */
+    }
+}
 /* --- ABOUT --- */
 .about { padding: 100px 0; background: white; }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
@@ -99,20 +171,20 @@ nav { display: flex; justify-content: space-between; align-items: center; }
 .reveal { opacity: 0; transform: translateY(40px); transition: 1.2s cubic-bezier(0.165, 0.84, 0.44, 1); }
 .reveal-active { opacity: 1; transform: translateY(0); }
 .main-footer { padding: 50px 0; text-align: center; background: var(--navy-grad); color: white; font-size: 0.9rem; opacity: 0.9; }
-/* --- PAGE TRANSITION BASE --- */
+/* --- PAGE TRANSITION STATES --- */
 body {
     opacity: 1;
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* State when leaving a page */
+/* Class we will apply via JS before leaving the page */
 body.fade-out {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-20px); /* Slides slightly up as it disappears */
 }
 
-/* State when entering a page */
-.contact-page, .home-page {
+/* Initial state for the new page loading in */
+.contact-page {
     animation: pageIn 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
@@ -125,34 +197,4 @@ body.fade-out {
         opacity: 1;
         transform: translateY(0);
     }
-}
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-        z-index: 3001; /* Ensure it stays above everything */
-    }
-
-    .nav-links {
-        position: fixed;
-        right: -100%; /* Hidden by default */
-        top: 0;
-        height: 100vh;
-        width: 75%;
-        background: white;
-        flex-direction: column;
-        justify-content: center;
-        transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-        box-shadow: -10px 0 40px rgba(0,0,0,0.1);
-        z-index: 3000;
-    }
-
-    /* This class is what the JS toggles */
-    .nav-links.active {
-        right: 0; 
-    }
-
-    /* Hamburger Animation (Optional but looks sick) */
-    .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
-    .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 }
