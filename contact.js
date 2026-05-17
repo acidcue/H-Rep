@@ -1,5 +1,5 @@
 (function() {
-    // INITIALIZE EMAILJS - Replace with your Public Key
+    // INITIALIZE EMAILJS - Locked with your active Public Key
     emailjs.init("HUbO2WDTiC7csM48K"); 
 })();
 
@@ -27,7 +27,22 @@ document.addEventListener('DOMContentLoaded', () => {
         messageLabel.innerText = "Career Objectives";
     });
 
-    // 2. FORM SUBMISSION
+    // 2. PARSE URL INQUIRY STRINGS FOR DYNAMIC ROLES
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetJob = urlParams.get('job');
+
+    if (targetJob) {
+        const messageBox = document.getElementById('message');
+        if (messageBox) {
+            messageBox.value = `Hello H-Rep Team,\n\nI am writing to express my interest and request additional tracking specifications regarding the open "${targetJob}" mandate posted on your platform.\n\nPlease advise on the background screening criteria and protocol steps.`;
+        }
+        // Force the form context toggle automatically to Talent processing mode
+        if (talentBtn) {
+            talentBtn.click();
+        }
+    }
+
+    // 3. FORM SUBMISSION
     if (form) {
         form.addEventListener('submit', function(event) {
             event.preventDefault();
@@ -36,13 +51,13 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.innerText = "Transmitting...";
             submitBtn.disabled = true;
 
-            // Use your Service ID and Template ID from EmailJS Dashboard
+            // Verified active Service ID and Template ID strings
             const serviceID = 'service_672zcvy';
             const templateID = 'template_8kb41o3';
 
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
-                    // Success UI
+                    // Success UI Display Injection
                     document.getElementById('form-container').innerHTML = `
                         <div class="success-message reveal reveal-active" style="text-align: center; padding: 40px 0;">
                             <div style="font-size: 50px; margin-bottom: 20px;">✓</div>
