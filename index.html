@@ -28,17 +28,19 @@
     </header>
 
     <main>
+        <!-- HERO SECTION -->
         <section class="hero" id="home">
             <div class="container hero-content reveal">
                 <h1>Leading the Future of <br><span class="text-gradient">Human Capital</span></h1>
                 <p>Connecting world-class talent with industry-leading organizations through innovative recruitment.</p>
                 <div class="hero-actions">
-                    <a href="#jobs" class="btn-primary">Explore Jobs</a>
+                    <a href="#jobs" class="btn-primary">Explore Careers</a>
                     <a href="contact.html" class="btn-secondary">Hire Talent</a>
                 </div>
             </div>
         </section>
 
+        <!-- SERVICES MATRIX SECTION (All 15 Services Built-In) -->
         <section id="services" class="services">
             <div class="container">
                 <div class="section-header reveal">
@@ -157,6 +159,7 @@
             </div>
         </section>
 
+        <!-- ABOUT SECTION -->
         <section id="about" class="about">
             <div class="container about-grid">
                 <div class="about-text reveal">
@@ -180,23 +183,27 @@
             </div>
         </section>
 
+        <!-- REVERTED CAREERS SECTION WITH DIRECT PORTAL INTAKE NOTICE -->
         <section id="jobs" class="jobs" style="padding: 100px 0; background: #f8f9fa;">
             <div class="container">
-                <div class="section-header reveal" style="text-align: center; margin-bottom: 50px;">
-                    <span class="eyebrow">Active Mandates</span>
-                    <h2 class="text-gradient-dark">Current Opportunities</h2>
-                    <p>Review our active requirements. Click any open role to initialize a specific inquiry portal submission.</p>
+                <div class="section-header reveal" style="text-align: center; margin-bottom: 40px;">
+                    <span class="eyebrow">Strategic Access</span>
+                    <h2 class="text-gradient-dark">Career Opportunities</h2>
                 </div>
 
-                <div id="job-board" class="jobs-list" style="display: grid; gap: 20px;">
-                    <p id="no-jobs-msg" style="text-align: center; color: #666; font-style: italic; padding: 20px;">No active mandates at this moment. Check back soon.</p>
+                <div class="reveal" style="background: var(--navy-grad); color: white; padding: 60px 40px; border-radius: 20px; text-align: center; max-width: 800px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+                    <h3 class="text-gradient" style="font-size: 1.8rem; margin-bottom: 15px;">Looking for Your Next Mandate?</h3>
+                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.05rem; line-height: 1.6; max-width: 600px; margin: 0 auto 30px auto;">
+                        We regularly match executive and technical talent with exclusive roles across our partner network. Submit your inquiry directly to our consultants through our inquiry portal to join our active talent database.
+                    </p>
+                    <a href="contact.html" class="btn-primary" style="display: inline-block; padding: 15px 35px; text-decoration: none;">Submit Inquiry to Portal</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="main-footer" ondblclick="adminAddJob()" style="cursor: pointer; user-select: none;">
-        <div class="container"><p>&copy; 2026 H-Rep Human Capital. All Rights Reserved. <span style="opacity: 0.15; font-size: 0.7rem;">[A.P.]</span></p></div>
+    <footer class="main-footer">
+        <div class="container"><p>&copy; 2026 H-Rep Human Capital. All Rights Reserved.</p></div>
     </footer>
 
     <script src="script.js"></script>
